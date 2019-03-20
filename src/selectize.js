@@ -36,6 +36,7 @@ var Selectize = function($input, settings) {
 		ignoreHover      : false,
 		hasOptions       : false,
 		currentResults   : null,
+		createNewText    : '',
 		lastValue        : '',
 		caretPos         : 0,
 		loading          : 0,
@@ -296,6 +297,7 @@ $.extend(Selectize.prototype, {
 		var self = this;
 		var field_label = self.settings.labelField;
 		var field_optgroup = self.settings.optgroupLabelField;
+		var field_create_label = self.settings.createNewText || 'Add';
 
 		var templates = {
 			'optgroup': function(data) {
@@ -311,7 +313,7 @@ $.extend(Selectize.prototype, {
 				return '<div class="item">' + escape(data[field_label]) + '</div>';
 			},
 			'option_create': function(data, escape) {
-				return '<div class="create">Add <strong>' + escape(data.input) + '</strong>&hellip;</div>';
+				return '<div class="create">' +field_create_label+ '<strong> ' + escape(data.input) + '</strong>&hellip;</div>';
 			}
 		};
 
